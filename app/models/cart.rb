@@ -1,5 +1,9 @@
 class Cart
-
+	attr_reader :items #等於下面三行
+	# def items
+	# 	@items
+	# end
+	
 	def initialize #任何要初始化的都放這裡
 		@items = []
 	end
@@ -9,7 +13,17 @@ class Cart
 	end
 
 	def add_item(product_id)
-		@items << product_id #把產品丟進去
+		
+		found_item = @items.find {|item| item.product_id == product_id}
+
+		if found_item
+			found_item.increment
+		else
+			@items << CartItem.new(product_id)
+		end
+		
 	end
+
+
 
 end
