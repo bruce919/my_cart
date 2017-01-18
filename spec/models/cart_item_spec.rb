@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe CarItem, type: :model do
+RSpec.describe CartItem, type: :model do
   
   it "每個 Cart Item 都可以計算它自己的金額(小計)" do
   	p1 = Product.create(price:100)

@@ -25,6 +25,24 @@ class Cart
 		
 	end
 
+	def total_price
+		# total = 0
+		# items.each |item| do
+		# 	total += item.price
+		# end
+		# totsl  累加的方式可以寫成下面
+		total = items.reduce(0){|sum, item| sum + item.price}
 
+		if xmas
+			total * 0.9
+		else
+			total
+		end
+	end
+
+	private
+	def xmas
+		Date.today.month == 12 && Date.today.day == 25
+	end
 
 end
