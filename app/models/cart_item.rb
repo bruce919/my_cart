@@ -9,6 +9,7 @@ class CartItem
 	# def quantity
 	# 	@quantity
 	# end
+
 	def initialize(product_id, quantity = 1)
 		@product_id = product_id
 		@quantity = quantity
@@ -20,4 +21,7 @@ class CartItem
 
 	end
 
+	def product
+		Product.find_by(id: @product_id)
+	end
 end

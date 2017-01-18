@@ -5,8 +5,10 @@ RSpec.describe Cart, type: :model do
 
 describe "基本功能" do
 
+	let(:cart){Cart.new} #等於 cart = Cart.new
+
 	it "可以新增商品到購物車裡，然後購物車裡就有東西了。" do
-		cart = Cart.new
+		
 		# expect(cart.empty?).to be true 正確寫法，但寫下面更好懂
 		expect(cart).to be_empty
 
@@ -16,7 +18,7 @@ describe "基本功能" do
 	end
 
 	it "如果加了相同種類的商品到購物車裡，購買項目(CartItem)並不會增加，但數量會改變。" do
-		cart = Cart.new
+		# cart = Cart.new
 		5.times{ cart.add_item(1)}
 		3.times{ cart.add_item(2)}
 
@@ -27,6 +29,12 @@ describe "基本功能" do
 	end
 
 	it "商品可以放到購物車裡，也可以再拿出來。" do
+		p1 = Product.create(title:"p1", price: 100)
+
+		cart.add_item(p1.id)
+
+		expect(cart.items.first.product).to be_a Product
+		expect(cart.items.first.product.price).to be 100
 
 	end
 	it "可以計算整台購物車的總消費金額。" do
