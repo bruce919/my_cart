@@ -37,6 +37,12 @@ describe "基本功能" do
 		expect(cart.items.first.product.price).to be 100
 
 	end
+
+
+	it "特別活動可能可搭配折扣(例如聖誕節的時候全面打 9 折，或是滿額滿千送百" do
+
+	end
+
 	it "可以計算整台購物車的總消費金額。" do
 
 	end

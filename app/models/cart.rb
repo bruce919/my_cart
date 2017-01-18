@@ -1,5 +1,5 @@
 class Cart
-	
+
 	attr_reader :items #等於下面三行
 	# def items
 	# 	@items
@@ -10,7 +10,7 @@ class Cart
 	end
 
 	def empty?
-		@items.empty?
+		@items.empty? #@可以拿掉
 	end
 
 	def add_item(product_id)
@@ -20,7 +20,7 @@ class Cart
 		if found_item
 			found_item.increment
 		else
-			@items << CartItem.new(product_id)
+			@items << CartItem.new(product_id) #@可以拿掉
 		end
 		
 	end
