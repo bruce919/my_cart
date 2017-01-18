@@ -1,19 +1,5 @@
 require 'rails_helper'
 
-class Cart
-	def initialize #任何要初始化的都放這裡
-		@items = []
-	end
-
-	def empty?
-		@items.empty?
-	end
-
-	def add_item(product_id)
-		@items << product_id #把產品丟進去
-	end
-
-end
 
 RSpec.describe Cart, type: :model do
 
@@ -21,17 +7,22 @@ describe "基本功能" do
 
 it "可以新增商品到購物車裡，然後購物車裡就有東西了。" do
 	cart = Cart.new
-	expect(cart.empty?).to be true
+	# expect(cart.empty?).to be true 正確寫法，但寫下面更好懂
+	expect(cart).to be_empty
 
 	cart.add_item(1)
-	expect(cart.empty?).to be false
+	# expect(cart.empty?).to be false 正確寫法，但寫下面更好懂
+	expect(cart).not_to be_empty
 end
 
-#2. 如果加了相同種類的商品到購物車裡，購買項目(CartItem)並不會增加，但數量會改變。
+it "如果加了相同種類的商品到購物車裡，購買項目(CartItem)並不會增加，但數量會改變。" do
+	
+
+end
+end
 #3. 商品可以放到購物車裡，也可以再拿出來。
 #4. 可以計算整台購物車的總消費金額。
 
-end
 
 describe "進階功能" do
 
