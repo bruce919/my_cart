@@ -7,12 +7,17 @@
   <!-- begin -->
   <div class="col-sm-6 col-md-4">
     <div class="thumbnail">
-      <img data-src="holder.js/300x300" alt="...">
+      <img src="http://fakeimg.pl/250x200/?text= <%= product.title %>">
       <div class="caption">
         <h3><%= product.title %></h3>
         <p>售價：<%= product.price %></p>
-        <p><%= product.description %></p>
-        <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+        <p><%= product.description.truncate(100) %></p>
+        <p>
+
+        <%= link_to '詳細資料', product, class:'btn btn-primary'%>
+        <%= link_to '放到購物車', '#', class:'btn btn-danger'%>
+
+        </p>
       </div>
     </div>
   </div>
