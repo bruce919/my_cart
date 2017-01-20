@@ -15,7 +15,7 @@
         <p>
 
         <%= link_to '詳細資料', product, class:'btn btn-primary'%>
-        <%= link_to '放到購物車', '#', class:'btn btn-danger'%>
+        <%= link_to '放到購物車', add_cart_path(product), class:'btn btn-danger', method: "post" %>
 
         </p>
       </div>
