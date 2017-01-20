@@ -40,9 +40,28 @@ class Cart
 		end
 	end
 
+
+	def  serialize
+		result = []
+
+		items.each do |item|
+			result << { "product_id" => item.product_id, "quantity" => item.quantity }
+		end
+
+		# result = items.map { |item|{ "product_id" => item.product_id, "quantity" => item.quantity } }
+
+		{ "items" => result }
+	end
+
+	def cart_item_hash 
+
+
+
+	end
 	private
 	def xmas
 		Date.today.month == 12 && Date.today.day == 25
 	end
+
 
 end

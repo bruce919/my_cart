@@ -8,6 +8,7 @@ describe "基本功能" do
 	let(:cart){Cart.new} #等於 cart = Cart.new
 	let(:p1){Product.create(title:"P1", price: 100)}
 	let(:p2){Product.create(title:"P2", price: 200)} 
+	
 	it "可以新增商品到購物車裡，然後購物車裡就有東西了。" do
 		
 		# expect(cart.empty?).to be true 正確寫法，但寫下面更好懂
@@ -75,11 +76,35 @@ describe "基本功能" do
 
 	describe "進階功能" do
 
-	#* 因為購物車將以 Session 方式儲存，所以：
-	  #* 可以將購物車內容轉換成 Hash
-	  #* 也可以把 Hash 還原成購物車的內容
+	it "可以將購物車內容轉換成 Hash，存到 Session 裡" do
+      cart = Cart.new
+      3.times { cart.add_item(2) }   # 新增商品 id 2
+      4.times { cart.add_item(5) }   # 新增商品 id 5
+
+      expect(cart.serialize).to eq session_hash
+    end
+	  
+
+	  it "也可以把 Hash 還原成購物車的內容" do
+	  	cart = Cart.from_hash(cart_item_hash)
+
+	  	expect(cart.items.count).to be 2
+	  	expect(cart.items.first.product_id).to be 1
+	  	expect(cart.items.last.quantity).to be 5
+
+	  end
 
 	end
 
+
+  private
+  def session_hash
+    {
+      "items" => [
+        {"product_id" => 2, "quantity" => 3},
+        {"product_id" => 5, "quantity" => 4}
+      ]
+    }
+  end
 
 end
