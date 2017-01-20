@@ -86,11 +86,12 @@ describe "基本功能" do
 	  
 
 	  it "也可以把 Hash 還原成購物車的內容" do
-	  	cart = Cart.from_hash(cart_item_hash)
+
+	  	cart = Cart.from_hash(session_hash)
 
 	  	expect(cart.items.count).to be 2
-	  	expect(cart.items.first.product_id).to be 1
-	  	expect(cart.items.last.quantity).to be 5
+	  	expect(cart.items.first.product_id).to be 2
+	  	expect(cart.items.last.quantity).to be 4
 
 	  end
 
@@ -106,5 +107,16 @@ describe "基本功能" do
       ]
     }
   end
+
+  private 
+	def cart_item_hash
+    {
+      "items" => [
+        {"product_id" => 2, "quantity" => 3},
+        {"product_id" => 5, "quantity" => 4}
+      ]
+    }
+	end
+
 
 end

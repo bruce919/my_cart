@@ -5,8 +5,8 @@ class Cart
 	# 	@items
 	# end
 	
-	def initialize #任何要初始化的都放這裡
-		@items = []
+	def initialize(items = []) #任何要初始化的都放這裡
+		@items = items
 	end
 
 	def empty?
@@ -53,11 +53,28 @@ class Cart
 		{ "items" => result }
 	end
 
-	def cart_item_hash 
-
+	def self.from_hash(hash)
+	
+		if hash && hash["items"]
+			# result = []
+			# hash["items"].each do |item_hash|
+			# 	result << CartItem.new(item_hash["product_id"],item_hash["quantity"])
+			# end
+			result = hash["items"].map {|item_hash| CartItem.new(item_hash["product_id"],item_hash["quantity"])}
+			Cart.new(result)
+		else
+			Cart.new
+		end
 
 
 	end
+  #self.from_hash....類別方法也可以這樣寫 
+	# class < self 
+	# 	def from_hash(hash)
+
+	# 	end
+	# end
+
 	private
 	def xmas
 		Date.today.month == 12 && Date.today.day == 25
