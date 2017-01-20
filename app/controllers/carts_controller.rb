@@ -18,6 +18,14 @@ class CartsController < ApplicationController
 				
 	end
 
+	def show
+
+	end
+
+	def destroy
+		session[:my_shopping_carts426] = nil
+		redirect_to root_path, notice: "購物車已刪除"
+	end
 
 end
 
