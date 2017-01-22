@@ -7,6 +7,7 @@ end
 
 gem 'devise'
 gem 'simple_form'
+gem 'braintree', '~> 2.72.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.1'
@@ -46,6 +47,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'timecop'
   gem 'faker'
+  gem 'hirb-unicode'
 end
 
 group :development do

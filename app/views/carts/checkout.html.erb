@@ -5,10 +5,28 @@
 
 <h2>收件人</h2>
 <%= simple_form_for(Order.new) do |f| %>
+
+<div id="payment-form"></div>
   <%= f.input :receipent, label: false, placeholder:'收件人姓名' %>
   <%= f.input :tel, label: false, placeholder:'電話'  %>
   <%= f.input :address, label: false, placeholder:'地址'%>
   <%= f.input :company_id, label: false, placeholder:'公司統編' %>
+
+  <hr>
+	
+
+
   <%= f.submit "建立訂單", class:'btn btn-danger' %>
 <% end %>
 
+	
+
+  <script src="https://js.braintreegateway.com/js/braintree-2.30.0.min.js"></script>
+<script>
+var clientToken = "<%= Braintree::ClientToken.generate %>"
+
+
+braintree.setup(clientToken, "dropin", {
+  container: "payment-form"
+});
+</script>
