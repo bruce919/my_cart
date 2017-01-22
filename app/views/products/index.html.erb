@@ -1,54 +1,20 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Products</h1>
-
+<h1>商品列表</h1>
 <div class="row">
-<% @products.each do |product| %>
+  <% @products.each do |product| %>
   <!-- begin -->
   <div class="col-sm-6 col-md-4">
     <div class="thumbnail">
-      <img src="http://fakeimg.pl/250x200/?text= <%= product.title %>">
+      <img src="http://fakeimg.pl/250x200/?text=<%=product.title%>">
       <div class="caption">
         <h3><%= product.title %></h3>
         <p>售價：<%= product.price %></p>
-        <p><%= product.description.truncate(100) %></p>
+        <p><%= product.description.truncate(60) %></p>
         <p>
-
-        <%= link_to '詳細資料', product, class:'btn btn-primary'%>
-        <%= link_to '放到購物車', add_cart_path(product), class:'btn btn-danger', method: "post" %>
-
+          <%= link_to '詳細資料', product, class:'btn btn-primary' %>
+          <%= link_to '放到購物車', add_cart_path(product), class:'btn btn-danger', method: "post" %>
         </p>
       </div>
     </div>
   </div>
   <!-- end -->
   <% end %>
-</div>
-
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Description</th>
-      <th>Price</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @products.each do |product| %>
-      <tr>
-        <td><%= product.title %></td>
-        <td><%= product.description %></td>
-        <td><%= product.price %></td>
-        <td><%= link_to 'Show', product %></td>
-        <td><%= link_to 'Edit', edit_product_path(product) %></td>
-        <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Product', new_product_path %>

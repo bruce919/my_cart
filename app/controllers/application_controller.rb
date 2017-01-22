@@ -4,7 +4,9 @@ class ApplicationController < ActionController::Base
   before_action :set_cart
 
   private
+  CART_SESSION = :my_shopping_cart426
+
   def set_cart
-  	@cart = Cart.from_hash(session[:my_shopping_carts426])
+    @cart = Cart.from_hash(session[CART_SESSION])
   end
 end

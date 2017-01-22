@@ -1,31 +1,21 @@
 class CartItem
+  attr_reader :product_id, :quantity
 
-	attr_reader :product_id #等於底下三行
-	# def product_id
-	# 	@product_id
-	# end
+  def initialize(product_id, quantity = 1)
+    @product_id = product_id
+    @quantity = quantity
+  end
 
-	attr_reader :quantity #等於底下三行
-	# def quantity
-	# 	@quantity
-	# end
+  def increment(n = 1)
+    @quantity += n if n > 0
+  end
 
-	def initialize(product_id, quantity = 1)
-		@product_id = product_id
-		@quantity = quantity
+  def product
+    Product.find_by(id: @product_id)
+  end
 
-	end
-
-	def increment(n = 1)
-		@quantity += n if n > 0 #不能傳負值
-
-	end
-
-	def product
-		Product.find_by(id: @product_id)
-	end
-
-	def price
-		product.price * quantity
-	end
+  def price
+    product.price * quantity
+  end
 end
+
