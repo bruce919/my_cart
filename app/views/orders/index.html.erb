@@ -1,0 +1,27 @@
+<h1>訂單列表</h1>
+
+
+ <table class="table">
+ 	<thead>
+	 	<tr>
+	 		<td>日期</td>
+	 		<td>訂單編號</td>
+	 		<td>金額</td>
+	 		<td>狀態</td>
+	 		<td>詳細資料</td>
+	 	</tr>
+ 	</thead>
+ 	 	<tbody>
+	 	<tr>
+	 		<% @orders.each do |order| %>
+	 		<td><%= order.created_at %></td>
+	 		<td><%= order.serial %></td>
+	 		<td><%= order.total_price %></td>
+	 		<td><%= order.aasm_state %></td>
+	 		<td><%= link_to '詳細', order, class: 'btn btn-xs btn-success' %>
+	 			<%= link_to '取消', cancel_order_path(order), method: "delete", class: 'btn btn-xs btn-danger' if order.may_cancel? %>
+	 		</td>
+	 	</tr>
+	 	<% end %>
+ 	</tbody>
+ </table>

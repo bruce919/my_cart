@@ -6,7 +6,8 @@
 <h2>收件人</h2>
 <%= simple_form_for(Order.new) do |f| %>
 
-<div id="payment-form"></div>
+	<div id="payment-form"></div>
+	
   <%= f.input :receipent, label: false, placeholder:'收件人姓名' %>
   <%= f.input :tel, label: false, placeholder:'電話'  %>
   <%= f.input :address, label: false, placeholder:'地址'%>

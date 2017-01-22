@@ -1,4 +1,7 @@
 <h1>商品列表</h1>
+
+<%= paginate @products, theme: 'twitter-bootstrap-3' %>
+
 <div class="row">
   <% @products.each do |product| %>
   <!-- begin -->

@@ -8,5 +8,9 @@ Rails.application.routes.draw do
     get :checkout
   end
 
-  resources :orders, only: [:index, :show, :new, :create]
+  resources :orders, only: [:index, :show, :new, :create] do
+	  	member do
+	  	delete :cancel
+	  end
+  end
 end
