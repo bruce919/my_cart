@@ -3,4 +3,12 @@
 <h2>購買明細</h2>
 <%= render "cart", cart: @cart %>
 
+<h2>收件人</h2>
+<%= simple_form_for(Order.new) do |f| %>
+  <%= f.input :receipent, label: false, placeholder:'收件人姓名' %>
+  <%= f.input :tel, label: false, placeholder:'電話'  %>
+  <%= f.input :address, label: false, placeholder:'地址'%>
+  <%= f.input :company_id, label: false, placeholder:'公司統編' %>
+  <%= f.submit "建立訂單", class:'btn btn-danger' %>
+<% end %>
 

@@ -19,7 +19,15 @@
   </tbody>
   <tfood>
     <tr>
-      <td colspan="3">總價</td>
+      <td colspan="3" align="right">未稅價</td>
+      <td><%= cart.total_price_without_tax %></td>
+    </tr>
+    <tr>
+      <td colspan="3" align="right">5% 營業稅</td>
+      <td><%= cart.tax %></td>
+    </tr>
+    <tr>
+      <td colspan="3" align="right">總價</td>
       <td><%= cart.total_price %></td>
     </tr>
   </tfood>

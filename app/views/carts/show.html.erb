@@ -4,6 +4,5 @@
 <%= render "cart", cart: @cart %>
 
 <%= link_to '繼續選購', root_path, class:'btn btn-default' %>
-<%= link_to '結帳', checkout_cart_path, class:'btn btn-danger' %>
-
+<%= link_to '結帳', checkout_cart_path, class:'btn btn-danger' unless @cart.empty? %>
 

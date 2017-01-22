@@ -1,5 +1,7 @@
 class CartsController < ApplicationController
 
+  before_action :user_only!, only: [:checkout]
+
   def add
     product = Product.find_by(id: params[:id])
     if product
@@ -21,5 +23,5 @@ class CartsController < ApplicationController
     session[CART_SESSION] = nil
     redirect_to root_path, notice: "購物車已清除"
   end
-
 end
+

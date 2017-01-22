@@ -7,4 +7,6 @@ Rails.application.routes.draw do
     post :add, path: '/add/:id'
     get :checkout
   end
+
+  resources :orders, only: [:index, :show, :new, :create]
 end

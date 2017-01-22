@@ -6,6 +6,14 @@ RSpec.describe Cart, type: :model do
     let(:p1) { Product.create(title: "P1", price: 100) }
     let(:p2) { Product.create(title: "P2", price: 200) }
 
+    it "可以計算含稅未稅" do
+      5.times { cart.add_item(p1.id) }
+      3.times { cart.add_item(p2.id) }
+
+      expect(cart.total_price_without_tax).to be (1100 / 1.05).round
+      expect(cart.tax).to be (1100 - (1100 / 1.05)).round
+    end
+
     it "可以新增商品到購物車裡，然後購物車裡就有東西了。" do
       expect(cart).to be_empty
 
