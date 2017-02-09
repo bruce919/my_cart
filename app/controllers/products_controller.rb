@@ -3,11 +3,13 @@ class ProductsController < ApplicationController
 
 
   before_action :set_product, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_request!
 
   # GET /products
   # GET /products.json
   def index
     @products = Product.page(params[:page]).per(6)
+    render json: {'logged_in' => true}
     # render json: @products #這一行可以把 Products 所有資料輸出成 jaon 格式，並顯示出來
   end
 
