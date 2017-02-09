@@ -23,6 +23,7 @@ class Cart
   def total_price
     total = items.reduce(0) { |sum, item| sum + item.price }
 
+    #聖誕節打9折
     if xmas
       total * 0.9
     else
