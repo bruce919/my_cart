@@ -28,6 +28,8 @@ class ApplicationController < ActionController::Base
     @current_user = User.find(auth_token[:user_id])
   rescue JWT::VerificationError, JWT::DecodeError
     render json: { errors: ['驗證失敗'] }, status: :unauthorized
+  # rescue JWT::ExpiredSignature
+  #   render_failed ['授權已過期']
   end
 
   private
