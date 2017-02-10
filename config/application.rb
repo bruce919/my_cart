@@ -13,3 +13,7 @@ module MyCart
     # -- all .rb files in that directory are automatically loaded.
   end
 end
+
+class Application < Rails::Application
+  config.time_zone = 'Taipei'
+end

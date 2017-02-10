@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  #加入認證
   post 'auth_user' => 'authentication#authenticate_user'
 
   apipie

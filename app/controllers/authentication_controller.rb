@@ -1,3 +1,4 @@
+#andle all authentication requests to the API 處理用戶登錄然後返回授權token
 class AuthenticationController < ApplicationController
   
   def authenticate_user
